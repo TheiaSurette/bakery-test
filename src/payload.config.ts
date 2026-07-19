@@ -30,7 +30,11 @@ const dirname = path.dirname(filename)
 
 export default buildConfig({
   onInit: async (payload) => {
-    await seed(payload)
+    try {
+      await seed(payload)
+    } catch (err) {
+      payload.logger.error('Seed failed — run again after tables are created')
+    }
   },
   admin: {
     user: 'users',
