@@ -1,0 +1,52 @@
+{
+  "name": "bakery-test",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:start": "docker compose up -d",
+    "db:stop": "docker compose down",
+    "payload:migrate": "cross-env NODE_OPTIONS=--no-deprecation payload migrate",
+    "payload:migrate:create": "cross-env NODE_OPTIONS=--no-deprecation payload migrate:create",
+    "payload:seed": "echo 'Seeding runs automatically on dev server start via onInit hook'",
+    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap"
+  },
+  "dependencies": {
+    "@payloadcms/db-postgres": "^3.85.0",
+    "@payloadcms/next": "^3.85.0",
+    "@payloadcms/plugin-nested-docs": "^3.85.0",
+    "@payloadcms/plugin-redirects": "^3.85.0",
+    "@payloadcms/plugin-seo": "^3.85.0",
+    "@payloadcms/richtext-lexical": "^3.85.0",
+    "@payloadcms/storage-vercel-blob": "^3.85.0",
+    "radix-ui": "^1.6.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "cross-env": "^7.0.3",
+    "lucide-react": "^0.475.0",
+    "next": "^16.2.0",
+    "payload": "^3.85.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "sharp": "^0.33.0",
+    "tailwind-merge": "^2.5.0",
+    "tw-animate-css": "^1.2.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.0.0",
+    "@tailwindcss/postcss": "^4.0.0",
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "^16.2.0",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.0"
+  },
+  "packageManager": "pnpm@11.10.0+sha512.0b7f8b98060031904c017e3a41eb187a16d40eeb829b95c4f8cb03681761fc4ab53dd219115b9b447f4dce1a05a214764461e7d3703392a9f32f9511ce8c86c8"
+}
