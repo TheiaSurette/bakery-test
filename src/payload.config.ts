@@ -5,6 +5,7 @@ import { vercelBlobStorage } from '@payloadcms/storage-vercel-blob'
 import { seoPlugin } from '@payloadcms/plugin-seo'
 import { redirectsPlugin } from '@payloadcms/plugin-redirects'
 import { nestedDocsPlugin } from '@payloadcms/plugin-nested-docs'
+import crypto from 'node:crypto'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
@@ -61,7 +62,7 @@ export default buildConfig({
       BlocksFeature({ inlineBlocks: [] }),
     ],
   }),
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: process.env.PAYLOAD_SECRET || crypto.randomBytes(32).toString('hex'),
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
