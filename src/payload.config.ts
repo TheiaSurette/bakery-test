@@ -65,7 +65,7 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URI || process.env.DATABASE_URL || process.env.POSTGRES_URL || '',
     },
-    push: process.env.NODE_ENV !== 'production',
+    push: true,
     migrationDir: path.resolve(dirname, 'migrations'),
     idType: 'uuid',
   }),
