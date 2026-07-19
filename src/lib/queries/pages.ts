@@ -18,15 +18,19 @@ export async function getPageBySlug(slug: string): Promise<Page | null> {
 }
 
 export async function getAllPageSlugs(): Promise<string[]> {
-  const payload = await getPayload({ config })
+  try {
+    const payload = await getPayload({ config })
 
-  const result = await payload.find({
-    collection: 'pages',
-    where: { _status: { equals: 'published' } },
-    limit: 0,
-  })
+    const result = await payload.find({
+      collection: 'pages',
+      where: { _status: { equals: 'published' } },
+      limit: 0,
+    })
 
-  return result.docs
-    .map((doc) => doc.slug)
-    .filter((slug): slug is string => typeof slug === 'string' && slug !== 'home')
+    return result.docs
+      .map((doc) => doc.slug)
+      .filter((slug): slug is string => typeof slug === 'string' && slug !== 'home')
+  } catch {
+    return []
+  }
 }
